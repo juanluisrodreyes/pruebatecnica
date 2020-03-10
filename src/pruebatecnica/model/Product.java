@@ -8,9 +8,10 @@ public class Product {
 	private int basePrice; // in cents
 	private Set<Tax> taxes;
 
-	public Product(String name, double basePrice, Tax... taxes) {
+	public Product(String name, String basePrice, Tax... taxes) {
 		this.name = name;
-		this.basePrice = (int)(basePrice*100);
+		String[] baseSplit = basePrice.split("\\.");
+		this.basePrice = Integer.valueOf((baseSplit[0] + baseSplit[1])); // Conversion from String to integer
 		this.taxes = Set.of(taxes);
 	}
 
